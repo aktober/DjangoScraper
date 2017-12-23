@@ -1,0 +1,11 @@
+env/
+db.sqlite3
+*.pyc
+*.DS_Store
+.idea/
+DjangoScraper/settings_local.py
+DjangoScraper/settings_stage.py
+DjangoScraper/static
+env35
+celery.log
+celerybeat-schedule.db
