@@ -1,0 +1,27 @@
+{% for d in data %}
+    <tr>
+        <td>
+            <div>
+                <label><input type="checkbox" value="{{ d.id }}" class="mark-for-report"
+                        {% if d.use_in_report %} checked {% endif %}></label>
+            </div>
+        </td>
+        <td>
+            <div>{{ d.title }}</div>
+        </td>
+        <td>
+            <div>{{ d.category }}</div>
+        </td>
+
+        <td>
+            {% if d.image_url %}
+                <a href="{{ d.image_url }}">link</a>
+            {% endif %}
+        </td>
+        <td>{{ d.comments }}</td>
+        <td>{{ d.votes }}</td>
+        <td>
+            <button class="btn btn-success save-btn" value="{{ d.id }}">Edit</button>
+        </td>
+    </tr>
+{% endfor %}

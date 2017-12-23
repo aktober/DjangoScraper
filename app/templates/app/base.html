@@ -1,0 +1,25 @@
+{% load static %}
+
+<html lang="en" class="gr__v4-alpha_getbootstrap_com">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% block title %} {% endblock %}
+
+    {% include 'app/snippets/head_css.html' %}
+    {% block css %} {% endblock %}
+
+</head>
+<body data-gr-c-s-loaded="true">
+
+{% block content %}
+
+{% endblock %}
+
+{% include 'app/snippets/body_js.html' %}
+{% block js %} {% endblock %}
+</body>
+</html>

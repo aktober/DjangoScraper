@@ -1,0 +1,152 @@
+{% load static %}
+
+{#<div>#}
+
+    <form>
+        <div class="form-group form-group-sm row">
+            <label for="text-filter" class="col-sm-1 col-form-label-sm">Text</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm" id="text-filter" name="text">
+            </div>
+
+            <label for="category-filter" class="col-sm-1 col-form-label-sm"> Category</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm" id="category-filter" name="category">
+            </div>
+
+            <label for="comments-filter" class="col-sm-1 col-form-label-sm">Comments</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm" id="comments-filter" placeholder="like <10, >90"
+                       name="comments">
+            </div>
+        </div>
+
+        <div class="form-group form-group-sm row">
+            <label for="votes-filter" class="col-sm-1 col-form-label-sm">Votes</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control form-control-sm" id="votes-filter" placeholder="like <10, >90" name="votes">
+            </div>
+
+            <label for="sort-select" class="col-sm-1 col-form-label-sm">Sort</label>
+            <div class="col-sm-3">
+                <select class="form-control form-control-sm" id="sort-select">
+                    <option></option>
+                    <option value="use_in_report">Marked &uarr;</option>
+                    <option value="-use_in_report">Marked &darr;</option>
+
+                    <option value="title">Title &uarr;</option>
+                    <option value="-title">Title &darr;</option>
+
+                    <option value="category">Category &uarr;</option>
+                    <option value="-category">Category &darr;</option>
+
+                    <option value="comments">Comments &uarr;</option>
+                    <option value="-comments">Comments &darr;</option>
+
+                    <option value="votes">Votes &uarr;</option>
+                    <option value="-votes">Votes &darr;</option>
+                </select>
+            </div>
+
+            <div class="col-sm-4">
+                <button id="find-btn" type="button" class="btn btn-primary btn-sm">Find</button>
+                <button id="clear-filters" type="button" class="btn btn-info btn-sm">Clear filters</button>
+            </div>
+
+        </div>
+
+    </form>
+
+    <div>
+        <table id="main-tbl" class="table table-bordered">
+            <thead>
+            <tr>
+                <th data-field="mark">#</th>
+                <th data-field="title">Title</th>
+                <th data-field="category">Category</th>
+                <th data-field="image_url">Image url</th>
+                <th data-field="comments">Comments</th>
+                <th data-field="votes">Votes</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="content">
+
+            {% for d in data %}
+                <tr>
+                    <td>
+                        <div>
+                            <label><input type="checkbox" value="{{ d.id }}" class="mark-for-report"
+                                    {% if d.use_in_report %} checked {% endif %}></label>
+                        </div>
+                    </td>
+                    <td>
+                        <div>{{ d.title }}</div>
+                    </td>
+                    <td>
+                        <div>{{ d.category }}</div>
+                    </td>
+
+                    <td>
+                        {% if d.image_url %}
+                            <a href="{{ d.image_url }}">link</a>
+                        {% endif %}
+                    </td>
+                    <td>{{ d.comments }}</td>
+                    <td>{{ d.votes }}</td>
+                    <td>
+                        <button class="btn btn-success save-btn" value="{{ d.id }}">Edit</button>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edit</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group row" hidden="hidden">
+                    <label for="example-text-input" class="col-2 col-form-label">Id</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" value="" id="modal-id-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Title</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" value="" id="modal-title-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Category</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" value="" id="modal-category-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="modal-imageurl-input" class="col-2 col-form-label">Image url</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" value="" id="modal-imageurl-input">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="modal-save-btn" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+{#</div>#}

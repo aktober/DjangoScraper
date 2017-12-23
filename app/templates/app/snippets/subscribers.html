@@ -1,0 +1,31 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody class="table-rows">
+
+    {% for member in members %}
+        <tr>
+            <td>{{ member.email }}</td>
+            <td>{{ member.status }}</td>
+            <td><button type="button" class="unsubscribe btn btn-danger" value="{{ member.id }}">Delete</button></td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+<form id="form-subscribe">
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <input type="email" class="form-control" id='new-email' placeholder="Email..." required="required">
+        </div>
+        <div class="col-sm-3">
+            <input type="submit" class="btn btn-primary" value="Subscribe">
+        </div>
+    </div>
+</form>

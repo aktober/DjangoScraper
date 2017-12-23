@@ -1,0 +1,76 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Coin.FYI - Bitcoin Weekly Report</title>
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'app/css/cover.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+    <div class="site-wrapper">
+
+        <div class="site-wrapper-inner">
+
+            <div class="cover-container">
+
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <h3 class="masthead-brand bold">COIN.FYI</h3>
+                        <nav class="nav nav-masthead">
+                            <a class="nav-link active" href="#">Home</a>
+                            <a class="nav-link" href="#">FAQ</a>
+                            <a class="nav-link" href="#">Contact</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="inner cover">
+                    <h1 class="cover-heading">Bitcoin Weekly Report</h1>
+                    <p class="lead">Everything you need to know about the bitcoin topic, delivered to your inbox each
+                        week.</p>
+
+                    {% include 'app/snippets/subscribe_form.html' %}
+
+                    <!-- <div class="pull-left news-pref">
+                      <a role="button" data-toggle="collapse" href="#collapsePref" aria-expanded="false" aria-controls="collapsePref">Manage your report preferences</a>
+                      <div class="collapse" id="collapsePref">
+                        <div class="well">
+                          <ul>
+                            <li>
+                              <input type="checkbox" name="category" value="Market" id="market_id" checked>
+                              <label for="market_id">Market summery</label>
+                            </li>
+                            <li>
+                              <input type="checkbox" name="category" value="News" id="news_id" checked>
+                              <label for="news_id">Top Weekly News</label>
+                            </li>
+                            <li>
+                              <input type="checkbox" name="category" value="Startups" id="startups_id" checked>
+                              <label for="startups_id">Products and Startups</label>
+                            </li>
+                            <li>
+                              <input type="checkbox" name="category" value="ICO" id="ico_id" checked>
+                              <label for="ico_id">Upcoming ICO’s</label>
+                            </li>
+                            <li>
+                              <input type="checkbox" name="category" value="Events" id="events_id" checked>
+                              <label for="events_id">Upcoming Events</label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div> -->
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

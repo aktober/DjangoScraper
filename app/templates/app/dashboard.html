@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Dashboard</title>
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'app/css/dashboard.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+    {% include 'app/snippets/navbar.html' %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#report" data-toggle="tab" id="tab-report">Report<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#weekly-news" class="nav-link" data-toggle="tab" id="tab-weekly-news">Weekly News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#subscr" class="nav-link" data-toggle="tab" id="tab-subscribers">Subscribers</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="report">
+                    {% include 'app/snippets/report.html' %}
+                </div>
+                <div class="tab-pane" id="subscr">
+                    {% include 'app/snippets/subscribers.html' %}
+                </div>
+                <div class="tab-pane" id="weekly-news">
+                    {% include 'app/snippets/weekly_news.html' %}
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+    </div>
+
+{% endblock %}

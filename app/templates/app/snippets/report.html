@@ -1,0 +1,128 @@
+{% load static %}
+
+<section>
+    <div class="category">
+        <h5>Market summary {{ report_date }}</h5>
+        <ul>
+            <li>Total Market cap is
+                {% if market_cap_is_up %}
+                    up
+                {% else %}
+                    down
+                {% endif %}
+                {{ market_cap_diff }}% and now ${{ market_cap }}
+            </li>
+            <li>BTC price volatility:  &#8595; ${{ btc_low }} | &#8593; ${{ btc_high }}
+            </li>
+            <li>BTC Dominance is
+                {% if btc_dominance_is_up %}
+                    up
+                {% else %}
+                    down
+                {% endif %}
+                {{ btc_dominance_diff }}% and now {{ btc_dominance }}%
+            </li>
+            <li>Best performance*:
+                {% for b in best %}
+                    {{ b.1 }} ${{ b.2 }} ({{ b.0 }}%),
+                {% endfor %}
+
+            </li>
+            <li>Worts performance*:
+                {% for w in worse %}
+                    {{ w.1 }} ${{ w.2 }} ({{ w.0 }}%),
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <form>
+        <h5>Weekly News</h5>
+
+        <table class="table">
+            <tbody id="weekly-news-content">
+
+            {% for d in weekly_news %}
+                <tr>
+                    <td width="75%"><div>{{ d.title }}</div></td>
+                    <td width="25%">
+                        <img src="{{ d.image_url }}">
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </form>
+</section>
+
+<section>
+{#    <form>#}
+        <h5>Products and Startups</h5>
+        <div class="form-group">
+            <input type="text" class="form-control" id="titleField" placeholder="Title">
+        </div>
+        <div class="form-group">
+                    <textarea name="" id="" cols="30" rows="5" class="form-control" id="decsField"
+                              placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="url" class="form-control" id="url" placeholder="Link">
+        </div>
+        <div class="form-group">
+            <input type="file" id="uploadNewsImg">
+        </div>
+{#    </form>#}
+</section>
+
+<section>
+    <form>
+        <h5>Upcoming ICO’s</h5>
+        <div class="form-group">
+            <input type="text" class="form-control" id="titleField" placeholder="Title">
+        </div>
+        <div class="form-group">
+                    <textarea name="" id="" cols="30" rows="5" class="form-control" id="decsField"
+                              placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="url" class="form-control" id="url" placeholder="Link">
+        </div>
+        <div class="form-group">
+            <input type="date" name="Event day">
+        </div>
+        <div class="form-group">
+            <input type="file" id="uploadNewsImg">
+        </div>
+    </form>
+</section>
+
+<section>
+    <form>
+        <h5>Upcoming Events</h5>
+        <div class="form-group">
+            <input type="text" class="form-control" id="titleField" placeholder="Title">
+        </div>
+        <div class="form-group">
+                    <textarea name="" id="" cols="30" rows="5" class="form-control" id="decsField"
+                              placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="url" class="form-control" id="url" placeholder="Link">
+        </div>
+        <div class="form-group">
+            <input type="date" name="Event day">
+        </div>
+        <div class="form-group">
+            <input type="file" id="uploadNewsImg">
+        </div>
+    </form>
+</section>
+
+<button type="submit" class="btn btn-success" id="submit-report">Submit</button>
+<button type="submit" class="btn btn-default" id="preview-report">Preview</button>
+<button type="submit" class="btn btn-default" id="send-test-email">Send test email</button>
+<p></p>

@@ -1,0 +1,10 @@
+{% for d in weekly_news %}
+    <tr>
+        <td width="75%">
+            <div>{{ d.title }}</div>
+        </td>
+        <td width="25%">
+            <img src="{{ d.image_url }}">
+        </td>
+    </tr>
+{% endfor %}
